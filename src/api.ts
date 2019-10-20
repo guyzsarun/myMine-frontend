@@ -1,6 +1,10 @@
 import openSocket from "socket.io-client";
 import { User } from "./components/App";
-const socket = openSocket("https://mymine-server.herokuapp.com/");
+
+const serverUrl = "https://mymine-server.herokuapp.com/";
+const serverUrl2 = "192.168.1.30:3000";
+
+const socket = openSocket(serverUrl);
 
 type Callback<T = any> = (err: any, result: T) => void;
 
