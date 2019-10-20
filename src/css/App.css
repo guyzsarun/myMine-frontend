@@ -1,0 +1,51 @@
+.App-game {
+  width: 70%;
+  background-color: white;
+  float: left;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  left: 0;
+  text-align: center;
+}
+
+.Game-header {
+  margin-top: -20px;
+  padding-top: 10px;
+  background-color: antiquewhite;
+}
+
+.App-chat {
+  text-align: center;
+  background-color: white;
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  right: 0;
+}
+
+.Chat-header {
+  height: 50px;
+  margin-top: -20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  background-color: rgb(177, 177, 177);
+}
+
+.Start-button {
+  color: white;
+  font-size: 18px;
+  background-color: rgb(97, 97, 97);
+  border: none;
+  text-align: center;
+  padding: 10px 130px;
+  margin-top: 20px;
+}
+

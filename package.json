@@ -1,0 +1,57 @@
+{
+  "name": "netcentric",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/node": "12.7.5",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
+    "@types/react-sound": "^1.2.1",
+    "@types/socket.io-client": "^1.4.32",
+    "eslint": "^6.5.1",
+    "nodemon": "^1.19.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1",
+    "react-sound": "^1.2.0",
+    "reactjs-popup": "^1.5.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "typescript": "3.6.3",
+    "uifx": "^2.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "nodemon server/server.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "description": "Just a frontend of netcentric game >>>>>>> 9c46a24be5062faa71c4d354412f74bcf27e2572",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aihuamen/netcentricbomb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aihuamen/netcentricbomb/issues"
+  },
+  "homepage": "https://github.com/aihuamen/netcentricbomb#readme"
+}
