@@ -18,6 +18,11 @@
   background-color: antiquewhite;
 }
 
+.Game-username {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .App-chat {
   text-align: center;
   background-color: white;

@@ -1,10 +1,10 @@
 import openSocket from "socket.io-client";
 import { User } from "./components/App";
 
-const serverUrl = "https://mymine-server.herokuapp.com/";
-//const serverUrl2 = "localhost:8000";
+//const serverUrl = "https://mymine-server.herokuapp.com/";
+const serverUrl2 = "localhost:8000";
 
-const socket = openSocket(serverUrl
+const socket = openSocket(serverUrl2
   );
 
 type Callback<T = any> = (err: any, result: T) => void;
@@ -103,3 +103,7 @@ export const gameStart = (callback: Callback<string>) => {
 export const onWinner = (callback: Callback<string>) => {
   socket.on("declareWinner", (winner: string) => callback(null, winner));
 };
+
+export const onHighscore = (callback: Callback<User>) => {
+  socket.on("declareHighScore", (winner: User) => callback(null, winner))
+}

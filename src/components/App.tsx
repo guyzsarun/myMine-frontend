@@ -12,7 +12,8 @@ import {
   onCountDown,
   onPlayable,
   onWinner,
-  emitResetBoard
+  emitResetBoard,
+  onHighscore
 } from "../api";
 import { Board } from "./Board";
 import { Chat } from "./Chat";
@@ -33,11 +34,12 @@ const App: React.FC = () => {
   const [playerName, setPlayerName] = useState("null");
   const [isLogin, setLogin] = useState(false);
   const [isPlayer, setPlayerStatus] = useState(false);
-  const [isPlayable, setPlayable] = useState("null");
+  const [isPlayable, setPlayable] = useState("-");
   const [scores, setScores] = useState<User[]>([]);
   const [winner, setWinner] = useState("");
   const [notReady, setNotReady] = useState(true);
   const [welcome, setWelcome] = useState(true);
+  const [highscore, setHighscore] = useState<User>(null)
 
   //const nico = new UIfx(Nico)
   //const applause = new UIfx(Applause)
@@ -63,11 +65,15 @@ const App: React.FC = () => {
     onWinner((err: any, winner: string) => {
       //applause.play();
       setWinner(winner);
-      setPlayable("null")
+      setPlayable("-");
     });
+    onHighscore((err: any, winner: User) => {
+      setHighscore(winner)
+      console.log(winner.userName+": "+winner.score)
+    })
     onResetBoard((err: any, round: number) => {
       setNotReady(true);
-      setPlayable("null")
+      setPlayable("-")
     });
   }, [setTimestamp, setCountdown, setPlayable]);
 
@@ -96,7 +102,7 @@ const App: React.FC = () => {
   };
 
   const toggleReset = () => {
-    return isPlayable === "null" ? (
+    return isPlayable === "-" ? (
       <button className="Start-button" onClick={resetBoard}>
           Reset
         </button>
@@ -108,10 +114,11 @@ const App: React.FC = () => {
   }
 
   const resetBoard = () => {
-    if(isPlayable === "null")
+    if(isPlayable === "-")
       emitResetBoard();
     else alert("You are currently playing!")  
   }
+
 
   return (
     <div className="App">
@@ -119,9 +126,10 @@ const App: React.FC = () => {
         <div className="App-game">
           <header className="Game-header">
             <h1>&#x1F4A3; Find My Mines &#x1F4A3;</h1>
-            <div>
+            <div className="Game-username">
               {isLogin ? (
-                "Nickname  : " + playerName + (isPlayer ? "" : " (spectator)")
+                "Nickname  : " + playerName + (isPlayer ? "" : " (spectator)") 
+                + "  Highscore: " + (highscore !== null ? highscore.userName +" - "+ highscore.score : "-")
               ) : (
                 <LoginPopup />
               )}
