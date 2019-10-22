@@ -9,6 +9,7 @@ interface TheBox {
 
 export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus }) => {
   const [pic, setPic] = useState(process.env.PUBLIC_URL + "image/unClick");
+  //const Nico = require("../sdfx/Nico.mp3")
 
   useEffect(() => {
     onResetBoard(() => {

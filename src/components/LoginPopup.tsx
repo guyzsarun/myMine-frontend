@@ -11,8 +11,14 @@ export const LoginPopup: any = () => {
   }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    emitUsername(input)
-    setInput('')
+    if(input !== "") {
+      emitUsername(input)
+      setInput('')
+    }
+    else{
+      alert("Please input your name!")
+    }
+    
     event.preventDefault()
   }
 
@@ -42,8 +48,13 @@ export const LoginPopup: any = () => {
           <button 
             type="button"
             onClick={() => {
-              emitUsername(input)
-              setInput("")
+              if(input !== "") {
+                emitUsername(input)
+                setInput('')
+              }
+              else{
+                alert("Please input your name!")
+              }
             }}>
             OK
           </button>

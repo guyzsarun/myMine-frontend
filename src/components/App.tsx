@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+//import UIfx from "uifx"
 import { LoginPopup } from "./LoginPopup";
 import {
   subscribeToTimer,
@@ -10,12 +11,15 @@ import {
   emitCountDown,
   onCountDown,
   onPlayable,
-  onWinner
+  onWinner,
+  emitResetBoard
 } from "../api";
 import { Board } from "./Board";
 import { Chat } from "./Chat";
 import "../css/App.css";
 import { Score } from "./Score";
+//const Nico = require("../sdfx/Nico.mp3")
+//const Applause = require("../sdfx/Applause.mp3")
 
 export interface User {
   userName: string;
@@ -32,8 +36,11 @@ const App: React.FC = () => {
   const [isPlayable, setPlayable] = useState("null");
   const [scores, setScores] = useState<User[]>([]);
   const [winner, setWinner] = useState("");
-  const [notReady, setReady] = useState(true);
+  const [notReady, setNotReady] = useState(true);
   const [welcome, setWelcome] = useState(true);
+
+  //const nico = new UIfx(Nico)
+  //const applause = new UIfx(Applause)
 
   useEffect(() => {
     onUsername((err: any, name: Array<any>) => {
@@ -54,17 +61,21 @@ const App: React.FC = () => {
       setCountdown(count);
     });
     onWinner((err: any, winner: string) => {
+      //applause.play();
       setWinner(winner);
+      setPlayable("null")
     });
     onResetBoard((err: any, round: number) => {
-      setReady(true);
+      setNotReady(true);
+      setPlayable("null")
     });
   }, [setTimestamp, setCountdown, setPlayable]);
 
   const clickReady = () => {
+    //nico.play()
     if (notReady) {
       emitCountDown(playerName, winner);
-      setReady(false);
+      setNotReady(false);
     }
   };
 
@@ -83,6 +94,24 @@ const App: React.FC = () => {
       </div>
     );
   };
+
+  const toggleReset = () => {
+    return isPlayable === "null" ? (
+      <button className="Start-button" onClick={resetBoard}>
+          Reset
+        </button>
+    ) : (
+      <button className="Start-button" onClick={resetBoard}>
+          Reset &#x1f6d1;
+        </button>
+    )
+  }
+
+  const resetBoard = () => {
+    if(isPlayable === "null")
+      emitResetBoard();
+    else alert("You are currently playing!")  
+  }
 
   return (
     <div className="App">
@@ -108,7 +137,7 @@ const App: React.FC = () => {
           ) : (
             <p></p>
           )}
-          {winner === "" ? <p></p> : <h2>The winner is: {winner}</h2>}
+          {isLogin && (winner !== "") ? <h2>The winner is: {winner}</h2> : <p></p> }
           {isLogin ? <Score scores={scores} /> : <p></p>}
           {isLogin ? (
             <h3 style={{ background: "lightgrey" }}>
@@ -124,6 +153,7 @@ const App: React.FC = () => {
           )}
 
           {isPlayer ? toggleReady() : ""}
+          {isPlayer ? toggleReset() : "" }
           <p>{timestamp}</p>
         </div>
         }
