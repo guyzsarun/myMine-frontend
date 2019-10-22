@@ -1,3 +1,4 @@
 # NetcentricBomb
-Test socket + frontend of this shitty game
 
+Heroku URL
+https://find-my-mine.herokuapp.com/
