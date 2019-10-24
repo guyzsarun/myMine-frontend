@@ -1,26 +1,25 @@
-import React, { useState, FormEvent, ChangeEvent } from "react"
-import Popup from "reactjs-popup"
-import {emitUsername} from "../api"
-import "../css/LoginPopup.css"
+import React, { useState, FormEvent, ChangeEvent } from "react";
+import Popup from "reactjs-popup";
+import { emitUsername } from "../api";
+import "../css/LoginPopup.css";
 
 export const LoginPopup: any = () => {
-  const [input,setInput] = useState("");
+  const [input, setInput] = useState("");
 
   const changeInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput(event.target.value)
-  }
+    setInput(event.target.value);
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    if(input !== "") {
-      emitUsername(input)
-      setInput('')
+    if (input !== "") {
+      emitUsername(input);
+      setInput("");
+    } else {
+      alert("Please input your name!");
     }
-    else{
-      alert("Please input your name!")
-    }
-    
-    event.preventDefault()
-  }
+
+    event.preventDefault();
+  };
 
   return (
     <Popup
@@ -33,33 +32,32 @@ export const LoginPopup: any = () => {
           <h1>Login Page &#x1F4A3;</h1>
           <hr />
         </header>
-        <form 
-          id="form" 
-          action="" 
-          onSubmit={handleSubmit}>
-          Username: <br/>
-          <input 
+        <form id="form" action="" onSubmit={handleSubmit}>
+          Username: <br />
+          <input
             value={input}
             onChange={changeInput}
-            className="Inputt" 
-            type="text" 
-            name="username">
-          </input>    
-          <button 
+            className="Inputt"
+            type="text"
+            name="username"
+          ></input>
+          <button
             type="button"
             onClick={() => {
-              if(input !== "") {
-                emitUsername(input)
-                setInput('')
+              if (input !== "") {
+                const aud = new Audio("../sdfx/Nico.mp3");
+                aud.play();
+                emitUsername(input);
+                setInput("");
+              } else {
+                alert("Please input your name!");
               }
-              else{
-                alert("Please input your name!")
-              }
-            }}>
+            }}
+          >
             OK
           </button>
         </form>
       </div>
     </Popup>
-  )
+  );
 };

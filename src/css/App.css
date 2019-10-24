@@ -12,6 +12,12 @@
   text-align: center;
 }
 
+.share {
+  display: flex;
+  width: "100%";
+  margin-bottom: 20px;
+}
+
 .Game-header {
   margin-top: -20px;
   padding-top: 10px;
@@ -25,7 +31,6 @@
 
 .fb-share-button {
   margin-top: 30px;
-  
 }
 
 .Game-username {
@@ -63,4 +68,3 @@
   padding: 10px 130px;
   margin-top: 20px;
 }
-

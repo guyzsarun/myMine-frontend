@@ -104,5 +104,5 @@ export const onWinner = (callback: Callback<string>) => {
 };
 
 export const onHighscore = (callback: Callback<User>) => {
-  socket.on("declareHighScore", (winner: User) => callback(null, winner))
-}
+  socket.on("declareHighScore", (winner: User) => callback(null, winner));
+};

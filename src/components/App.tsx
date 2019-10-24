@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import UIfx from "uifx"
 import { LoginPopup } from "./LoginPopup";
 import {
   subscribeToTimer,
@@ -20,9 +19,6 @@ import { Chat } from "./Chat";
 import "../css/App.css";
 import { Score } from "./Score";
 
-const Nico = require("../sdfx/Nico.mp3");
-const Applause = require("../sdfx/Applause.mp3")
-
 export interface User {
   userName: string;
   score: number;
@@ -40,10 +36,7 @@ const App: React.FC = () => {
   const [winner, setWinner] = useState("");
   const [notReady, setNotReady] = useState(true);
   const [welcome, setWelcome] = useState(true);
-  const [highscore, setHighscore] = useState<User>(null)
-
-  const nico = new UIfx(Nico)
-  const applause = new UIfx(Applause)
+  const [highscore, setHighscore] = useState<User>(null);
 
   useEffect(() => {
     onUsername((err: any, name: Array<any>) => {
@@ -64,24 +57,20 @@ const App: React.FC = () => {
       setCountdown(count);
     });
     onWinner((err: any, winner: string) => {
-      console.log("PLAY SOUND2")
-      applause.play();
       setWinner(winner);
       setPlayable("-");
     });
     onHighscore((err: any, winner: User) => {
-      setHighscore(winner)
-      console.log(winner.userName+": "+winner.score)
-    })
+      setHighscore(winner);
+      console.log(winner.userName + ": " + winner.score);
+    });
     onResetBoard((err: any, round: number) => {
       setNotReady(true);
-      setPlayable("-")
+      setPlayable("-");
     });
   }, [setTimestamp, setCountdown, setPlayable]);
 
   const clickReady = () => {
-    console.log("PLAY SOUND1")
-    nico.play()
     if (notReady) {
       emitCountDown(playerName, winner);
       setNotReady(false);
@@ -107,21 +96,19 @@ const App: React.FC = () => {
   const toggleReset = () => {
     return isPlayable === "-" ? (
       <button className="Start-button" onClick={resetBoard}>
-          Reset
-        </button>
+        Reset
+      </button>
     ) : (
       <button className="Start-button" onClick={resetBoard}>
-          Reset &#x1f6d1;
-        </button>
-    )
-  }
+        Reset &#x1f6d1;
+      </button>
+    );
+  };
 
   const resetBoard = () => {
-    if(isPlayable === "-")
-      emitResetBoard();
-    else alert("You are currently playing!")  
-  }
-
+    if (isPlayable === "-") emitResetBoard();
+    else alert("You are currently playing!");
+  };
 
   return (
     <div className="App">
@@ -129,17 +116,24 @@ const App: React.FC = () => {
         <div className="App-game">
           <header className="Game-header">
             <div className="Game-Title">
-              <h1>&#x1F4A3; Find My Mines &#x1F4A3;</h1>
-              <div className="fb-share-button" data-href="https://www.facebook.com/RotaractChula/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FRotaractChula%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
+              <h1 style={{ margin: "auto" }}>
+                &#x1F4A3; Find My Mines &#x1F4A3;
+              </h1>
             </div>
-            <div className="Game-username">
+            <div className="Game-username" style={{ fontWeight: 800 }}>
               {isLogin ? (
-                "Nickname  : " + playerName + (isPlayer ? "" : " (spectator)") 
-                + "  Highscore: " + (highscore !== null ? highscore.userName +" - "+ highscore.score : "-")
+                "Nickname  : " +
+                playerName +
+                (isPlayer ? "" : " (spectator)") +
+                "   |   Highscore  : " +
+                (highscore !== null
+                  ? highscore.userName + " - " + highscore.score
+                  : "-")
               ) : (
                 <LoginPopup />
               )}
             </div>
+
             <hr />
           </header>
           {isLogin ? (
@@ -151,7 +145,11 @@ const App: React.FC = () => {
           ) : (
             <p></p>
           )}
-          {isLogin && (winner !== "") ? <h2>The winner is: {winner}</h2> : <p></p> }
+          {isLogin && winner !== "" ? (
+            <h2>The winner is: {winner}</h2>
+          ) : (
+            <p></p>
+          )}
           {isLogin ? <Score scores={scores} /> : <p></p>}
           {isLogin ? (
             <h3 style={{ background: "lightgrey" }}>
@@ -167,9 +165,25 @@ const App: React.FC = () => {
           )}
 
           {isPlayer ? toggleReady() : ""}
-          {isPlayer ? toggleReset() : "" }
-          <p>{timestamp}</p>
-          
+          {isPlayer ? toggleReset() : ""}
+          <div className="share">
+            <div
+              className="fb-share-button"
+              data-href="https://www.facebook.com/RotaractChula/"
+              data-layout="button_count"
+              data-size="large"
+              style={{ width: "40%" }}
+            >
+              <a
+                target="_blank"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FRotaractChula%2F&amp;src=sdkpreparse"
+                className="fb-xfbml-parse-ignore"
+              >
+                Share
+              </a>
+            </div>
+            <p style={{ width: "60%", paddingTop: "20px" }}>{timestamp}</p>
+          </div>
         </div>
         }
         <div className="App-chat">
