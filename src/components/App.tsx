@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Popup from "reactjs-popup";
 import { LoginPopup } from "./LoginPopup";
 import {
   subscribeToTimer,
@@ -39,6 +40,7 @@ const App: React.FC = () => {
   const [notReady, setNotReady] = useState(true);
   const [welcome, setWelcome] = useState(true);
   const [highscore, setHighscore] = useState<User>(null);
+  const [skin, setSkin] = useState(1)
 
   useEffect(() => {
     onUsername((err: any, name: Array<any>) => {
@@ -83,6 +85,16 @@ const App: React.FC = () => {
     if (isPlayable !== "-") {
       emitSurrender(playerName);
     }
+  }
+
+  const clickOne = () => {
+    setSkin(1)
+  }
+  const clickTwo = () => {
+    setSkin(2)
+  }
+  const clickThree = () => {
+    setSkin(3)
   }
 
   const toggleReady = () => {
@@ -177,7 +189,7 @@ const App: React.FC = () => {
             <p></p>
           )}
           {isLogin ? (
-            <Board name={playerName} status={playerName === isPlayable} />
+            <Board name={playerName} status={playerName === isPlayable} skin={skin} />
           ) : (
             <h2>Please Login First</h2>
           )}
@@ -187,21 +199,28 @@ const App: React.FC = () => {
           <div className="share">
             <div
               className="fb-share-button"
-              data-href="https://www.facebook.com/RotaractChula/"
+              data-href="http://find-my-mine.herokuapp.com/"
               data-layout="button_count"
               data-size="large"
               style={{ width: "20%" }}
             >
               <a
                 target="_blank"
-                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FRotaractChula%2F&amp;src=sdkpreparse"
+                href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffind-my-mine.herokuapp.com%2F&amp;src=sdkpreparse"
                 className="fb-xfbml-parse-ignore"
               >
                 Share
               </a>
             </div>
-            <div style={{ width: "20%", marginTop: "20px" }}>
+            <div style={{ width: "20%", marginTop: "20px", display: "flex", justifyContent: "center" }}>
               <CreditPopup />
+              <Popup trigger={<button style={{ height: "50px" }}>Select skin</button>} position="top center">
+                <div className="Buttons">
+                  <button onClick={clickOne}>Skin 1</button>
+                  <button onClick={clickTwo}>Skin 2</button>
+                  <button onClick={clickThree}>Skin 3</button>
+                </div>
+              </Popup>
             </div>
 
             <p style={{ width: "60%", paddingTop: "20px" }}>{timestamp}</p>

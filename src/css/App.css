@@ -68,3 +68,8 @@
   padding: 10px 130px;
   margin-top: 20px;
 }
+
+.Buttons {
+  display: flex;
+  justify-content: center;
+}

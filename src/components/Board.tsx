@@ -6,9 +6,10 @@ import "../css/Board.css";
 interface TheBoard {
   name: string;
   status: boolean;
+  skin: number;
 }
 
-export const Board: React.FC<TheBoard> = ({ name, status }) => {
+export const Board: React.FC<TheBoard> = ({ name, status, skin }) => {
   const [round, setRound] = useState(1);
   const [startGame, setStart] = useState(false);
 
@@ -40,7 +41,7 @@ export const Board: React.FC<TheBoard> = ({ name, status }) => {
             {Array(6)
               .fill(0)
               .map((_, j) => (
-                <Box pos={6 * i + j} user={name} pStatus={status} />
+                <Box pos={6 * i + j} user={name} pStatus={status} skin={skin} />
               ))}
           </div>
         ))}

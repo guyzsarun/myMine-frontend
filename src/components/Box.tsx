@@ -4,10 +4,11 @@ import { chooseBox, onResetBoard, onBox, scoreUpdate, getScore } from "../api";
 interface TheBox {
   pos: number;
   user: string;
-  pStatus: boolean
+  pStatus: boolean;
+  skin: number;
 }
 
-export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus }) => {
+export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus, skin }) => {
   const [pic, setPic] = useState(process.env.PUBLIC_URL + "image/unClick");
 
   useEffect(() => {
@@ -16,8 +17,8 @@ export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus }) => {
     });
     onBox((err: any, res: Array<any>) => {
       if (res && pos === res[0]) {
-        const resPic = res[1]
-          ? process.env.PUBLIC_URL + "image/bombgif"
+        let resPic = res[1]
+          ? selectSkin
           : process.env.PUBLIC_URL + "image/tiles";
 
         if (res[1] && user === res[2]) {
@@ -34,6 +35,14 @@ export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus }) => {
       chooseBox(pos, user);
     }
   };
+
+  let selectSkin = () => {
+    switch(skin) {
+      case 1: return process.env.PUBLIC_URL + "image/bombgif";  
+      case 2: return process.env.PUBLIC_URL + "image/bombgif2";
+      case 3: return process.env.PUBLIC_URL + "image/bombgif3";
+    }
+  }
 
   return <img src={pic} onClick={togglePic} alt="Tiles" />;
 };

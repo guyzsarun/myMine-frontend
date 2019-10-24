@@ -4,4 +4,5 @@
 
 .button2 {
   height: 50px !important;
+  border: 2px solid black;
 }
