@@ -18,6 +18,7 @@ import { Board } from "./Board";
 import { Chat } from "./Chat";
 import "../css/App.css";
 import { Score } from "./Score";
+import { CreditPopup } from "./CreditPopup";
 
 export interface User {
   userName: string;
@@ -182,6 +183,7 @@ const App: React.FC = () => {
                 Share
               </a>
             </div>
+            <CreditPopup/>
             <p style={{ width: "60%", paddingTop: "20px" }}>{timestamp}</p>
           </div>
         </div>

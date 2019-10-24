@@ -5,6 +5,7 @@ import "../css/LoginPopup.css";
 
 export const LoginPopup: any = () => {
   const [input, setInput] = useState("");
+  const aud = new Audio("../sdfx/Nico.mp3");
 
   const changeInput = (event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
@@ -12,6 +13,7 @@ export const LoginPopup: any = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     if (input !== "") {
+      aud.play();
       emitUsername(input);
       setInput("");
     } else {
