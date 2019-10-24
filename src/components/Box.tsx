@@ -17,8 +17,9 @@ export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus, skin }) => {
     });
     onBox((err: any, res: Array<any>) => {
       if (res && pos === res[0]) {
-        let resPic = res[1]
-          ? selectSkin
+        console.log(skin)
+        const resPic = res[1]
+          ? selectSkin()
           : process.env.PUBLIC_URL + "image/tiles";
 
         if (res[1] && user === res[2]) {
@@ -36,7 +37,7 @@ export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus, skin }) => {
     }
   };
 
-  let selectSkin = () => {
+  const selectSkin = () => {
     switch(skin) {
       case 1: return process.env.PUBLIC_URL + "image/bombgif";  
       case 2: return process.env.PUBLIC_URL + "image/bombgif2";

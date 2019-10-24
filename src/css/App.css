@@ -69,6 +69,24 @@
   margin-top: 20px;
 }
 
+.surrenderButton {
+  padding: 10px 130px !important;
+  margin-top: 20px;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  color: blue !important;
+}
+
+.skinButton {
+  background-color: #3b5998;
+  margin-top: 30px;
+  font-size: 16px;
+  padding: 5px 20px 5px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
 .Buttons {
   display: flex;
   justify-content: center;

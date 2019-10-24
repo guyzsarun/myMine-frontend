@@ -128,7 +128,7 @@ const App: React.FC = () => {
         <button className="Start-button" onClick={resetBoard}>
           Reset &#x1f6d1;
         </button>
-        <button onClick={clickSurrender}>Surrender</button>
+        <button className="surrenderButton" onClick={clickSurrender}>Surrender</button>
       </div>
     );
   };
@@ -212,7 +212,7 @@ const App: React.FC = () => {
             </div>
             <div style={{ width: "20%", marginTop: "20px", display: "flex", justifyContent: "center" }}>
               <CreditPopup />
-              <Popup trigger={<button style={{ height: "50px" }}>Select skin</button>} position="top center">
+              <Popup trigger={<button className="skinButton">Select skin</button>} position="top center">
                 <div className="Buttons">
                   <button onClick={clickOne}>Skin 1</button>
                   <button onClick={clickTwo}>Skin 2</button>
