@@ -5,7 +5,7 @@ import "../css/CreditPopup.css";
 export const CreditPopup: any = () => {
   return (
     <Popup
-      trigger={<button className="button2"> Credit </button>}
+      trigger={<button className="creditButton"> Credit </button>}
       modal
       closeOnDocumentClick
     >

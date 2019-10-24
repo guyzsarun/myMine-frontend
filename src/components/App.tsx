@@ -85,7 +85,7 @@ const App: React.FC = () => {
     if (isPlayable !== "-") {
       emitSurrender(playerName);
     }
-  }
+  };
 
   const clickOne = () => {
     setSkin(1)
@@ -119,7 +119,7 @@ const App: React.FC = () => {
         <button className="Start-button" onClick={resetBoard}>
           Reset
         </button>
-        <button onClick={clickSurrender}>
+        <button style={{ padding: "12px 50px 11px" }} onClick={clickSurrender}>
           Surrender
         </button>
       </div>
@@ -128,9 +128,7 @@ const App: React.FC = () => {
         <button className="Start-button" onClick={resetBoard}>
           Reset &#x1f6d1;
         </button>
-        <button onClick={clickSurrender}>
-          Surrender
-        </button>
+        <button onClick={clickSurrender}>Surrender</button>
       </div>
     );
   };
