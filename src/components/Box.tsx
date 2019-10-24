@@ -9,7 +9,6 @@ interface TheBox {
 
 export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus }) => {
   const [pic, setPic] = useState(process.env.PUBLIC_URL + "image/unClick");
-  //const Nico = require("../sdfx/Nico.mp3")
 
   useEffect(() => {
     onResetBoard(() => {
@@ -18,7 +17,7 @@ export const Box: React.FC<TheBox> = ({ pos = 69, user, pStatus }) => {
     onBox((err: any, res: Array<any>) => {
       if (res && pos === res[0]) {
         const resPic = res[1]
-          ? process.env.PUBLIC_URL + "image/bomb"
+          ? process.env.PUBLIC_URL + "image/bombgif"
           : process.env.PUBLIC_URL + "image/tiles";
 
         if (res[1] && user === res[2]) {
