@@ -81,7 +81,7 @@ const App: React.FC = () => {
 
   const clickSurrender = () => {
     if (isPlayable !== "-") {
-      emitSurrender();
+      emitSurrender(playerName);
     }
   }
 

@@ -2,7 +2,7 @@ import openSocket from "socket.io-client";
 import { User } from "./components/App";
 
 const serverUrl = "https://mymine-server.herokuapp.com/";
-//const serverUrl2 = "192.168.43.253:8000";
+//const serverUrl2 = "localhost:8000";
 
 const socket = openSocket(serverUrl);
 
@@ -107,6 +107,6 @@ export const onHighscore = (callback: Callback<User>) => {
   socket.on("declareHighScore", (winner: User) => callback(null, winner));
 };
 
-export const emitSurrender = () => {
-  socket.emit("surrender");
+export const emitSurrender = (surrender: string) => {
+  socket.emit("surrender", surrender);
 }

@@ -15,9 +15,9 @@ export const CreditPopup: any = () => {
           <li>Wasuthon Klyhirun 6031847021</li>
           <li>Sarun Nuntaviriyakul 6031851521</li>
           <li>Phumiphat Phumariyapong 6031826921</li>
-          <li>Rhach Roongniran 60369696969</li>
+          <li>Rhach Roongnirandon 6031838421</li>
         </ul>
-        <p>Netcentric Architecture 2019</p>
+        <p>Netcentric Architecture class 2019</p>
       </div>
     </Popup>
   );
