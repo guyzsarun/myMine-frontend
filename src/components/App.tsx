@@ -83,7 +83,7 @@ const App: React.FC = () => {
     if (isPlayable !== "-") {
       emitSurrender(playerName);
     }
-  }
+  };
 
   const toggleReady = () => {
     return !notReady ? (
@@ -107,7 +107,7 @@ const App: React.FC = () => {
         <button className="Start-button" onClick={resetBoard}>
           Reset
         </button>
-        <button onClick={clickSurrender}>
+        <button style={{ padding: "12px 50px 11px" }} onClick={clickSurrender}>
           Surrender
         </button>
       </div>
@@ -116,9 +116,7 @@ const App: React.FC = () => {
         <button className="Start-button" onClick={resetBoard}>
           Reset &#x1f6d1;
         </button>
-        <button onClick={clickSurrender}>
-          Surrender
-        </button>
+        <button onClick={clickSurrender}>Surrender</button>
       </div>
     );
   };
@@ -200,7 +198,7 @@ const App: React.FC = () => {
                 Share
               </a>
             </div>
-            <div style={{ width: "20%", marginTop: "20px" }}>
+            <div style={{ width: "20%" }}>
               <CreditPopup />
             </div>
 

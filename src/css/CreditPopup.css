@@ -5,3 +5,11 @@
 .button2 {
   height: 50px !important;
 }
+.creditButton {
+  background-color: #3b5998;
+  margin-top: 30px;
+  font-size: 16px;
+  padding: 5px 20px 5px;
+  border-radius: 4px;
+  font-weight: bold;
+}

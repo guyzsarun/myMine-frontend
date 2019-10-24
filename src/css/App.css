@@ -68,3 +68,12 @@
   padding: 10px 130px;
   margin-top: 20px;
 }
+
+.surrenderButton {
+  padding: 10px 130px !important;
+  margin-top: 20px;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  color: blue !important;
+}
