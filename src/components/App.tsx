@@ -173,7 +173,7 @@ const App: React.FC = () => {
               data-href="https://www.facebook.com/RotaractChula/"
               data-layout="button_count"
               data-size="large"
-              style={{ width: "40%" }}
+              style={{ width: "20%" }}
             >
               <a
                 target="_blank"
@@ -183,7 +183,10 @@ const App: React.FC = () => {
                 Share
               </a>
             </div>
-            <CreditPopup/>
+            <div style={{ width: "20%", marginTop: "20px" }}>
+              <CreditPopup />
+            </div>
+
             <p style={{ width: "60%", paddingTop: "20px" }}>{timestamp}</p>
           </div>
         </div>

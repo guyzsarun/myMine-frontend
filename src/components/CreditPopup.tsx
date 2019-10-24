@@ -1,11 +1,11 @@
-import React from "react"
-import Popup from "reactjs-popup"
-import "../css/CreditPopup.css"
+import React from "react";
+import Popup from "reactjs-popup";
+import "../css/CreditPopup.css";
 
 export const CreditPopup: any = () => {
   return (
     <Popup
-      trigger={<button className="button"> Credit </button>}
+      trigger={<button className="button2"> Credit </button>}
       modal
       closeOnDocumentClick
     >
@@ -20,5 +20,5 @@ export const CreditPopup: any = () => {
         <p>Netcentric Architecture 2019</p>
       </div>
     </Popup>
-  )
-}
+  );
+};
