@@ -12,7 +12,8 @@ import {
   onPlayable,
   onWinner,
   emitResetBoard,
-  onHighscore
+  onHighscore,
+  emitSurrender
 } from "../api";
 import { Board } from "./Board";
 import { Chat } from "./Chat";
@@ -78,6 +79,12 @@ const App: React.FC = () => {
     }
   };
 
+  const clickSurrender = () => {
+    if (isPlayable !== "-") {
+      emitSurrender();
+    }
+  }
+
   const toggleReady = () => {
     return !notReady ? (
       <div>
@@ -96,13 +103,23 @@ const App: React.FC = () => {
 
   const toggleReset = () => {
     return isPlayable === "-" ? (
-      <button className="Start-button" onClick={resetBoard}>
-        Reset
-      </button>
+      <div>
+        <button className="Start-button" onClick={resetBoard}>
+          Reset
+        </button>
+        <button onClick={clickSurrender}>
+          Surrender
+        </button>
+      </div>
     ) : (
-      <button className="Start-button" onClick={resetBoard}>
-        Reset &#x1f6d1;
-      </button>
+      <div>
+        <button className="Start-button" onClick={resetBoard}>
+          Reset &#x1f6d1;
+        </button>
+        <button onClick={clickSurrender}>
+          Surrender
+        </button>
+      </div>
     );
   };
 
