@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-//import UIfx from "uifx"
+import UIfx from "uifx"
 import { LoginPopup } from "./LoginPopup";
 import {
   subscribeToTimer,
@@ -19,8 +19,9 @@ import { Board } from "./Board";
 import { Chat } from "./Chat";
 import "../css/App.css";
 import { Score } from "./Score";
-//const Nico = require("../sdfx/Nico.mp3")
-//const Applause = require("../sdfx/Applause.mp3")
+
+const Nico = require("../sdfx/Nico.mp3");
+const Applause = require("../sdfx/Applause.mp3")
 
 export interface User {
   userName: string;
@@ -41,8 +42,8 @@ const App: React.FC = () => {
   const [welcome, setWelcome] = useState(true);
   const [highscore, setHighscore] = useState<User>(null)
 
-  //const nico = new UIfx(Nico)
-  //const applause = new UIfx(Applause)
+  const nico = new UIfx(Nico)
+  const applause = new UIfx(Applause)
 
   useEffect(() => {
     onUsername((err: any, name: Array<any>) => {
@@ -63,7 +64,8 @@ const App: React.FC = () => {
       setCountdown(count);
     });
     onWinner((err: any, winner: string) => {
-      //applause.play();
+      console.log("PLAY SOUND2")
+      applause.play();
       setWinner(winner);
       setPlayable("-");
     });
@@ -78,7 +80,8 @@ const App: React.FC = () => {
   }, [setTimestamp, setCountdown, setPlayable]);
 
   const clickReady = () => {
-    //nico.play()
+    console.log("PLAY SOUND1")
+    nico.play()
     if (notReady) {
       emitCountDown(playerName, winner);
       setNotReady(false);
@@ -125,7 +128,10 @@ const App: React.FC = () => {
       <div className="App-body">
         <div className="App-game">
           <header className="Game-header">
-            <h1>&#x1F4A3; Find My Mines &#x1F4A3;</h1>
+            <div className="Game-Title">
+              <h1>&#x1F4A3; Find My Mines &#x1F4A3;</h1>
+              <div className="fb-share-button" data-href="https://www.facebook.com/RotaractChula/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FRotaractChula%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
+            </div>
             <div className="Game-username">
               {isLogin ? (
                 "Nickname  : " + playerName + (isPlayer ? "" : " (spectator)") 
@@ -163,6 +169,7 @@ const App: React.FC = () => {
           {isPlayer ? toggleReady() : ""}
           {isPlayer ? toggleReset() : "" }
           <p>{timestamp}</p>
+          
         </div>
         }
         <div className="App-chat">

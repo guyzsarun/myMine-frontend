@@ -18,6 +18,16 @@
   background-color: antiquewhite;
 }
 
+.Game-Title {
+  display: flex;
+  justify-content: center;
+}
+
+.fb-share-button {
+  margin-top: 30px;
+  
+}
+
 .Game-username {
   display: flex;
   justify-content: space-evenly;
