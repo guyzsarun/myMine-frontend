@@ -5,17 +5,16 @@ import "../css/CreditPopup.css";
 export const CreditPopup: any = () => {
   return (
     <Popup
-      trigger={<button className="creditButton"> Credit </button>}
+      trigger={<button className="creditButton"> How to Play </button>}
       modal
       closeOnDocumentClick
     >
       <div className="Credit">
-        <h2>CREDIT</h2>
+        <h2>How to play</h2>
         <ul>
-          <li>Wasuthon Klyhirun 6031847021</li>
-          <li>Sarun Nuntaviriyakul 6031851521</li>
-          <li>Phumiphat Phumariyapong 6031826921</li>
-          <li>Rhach Roongnirandon 6031838421</li>
+          <li>There are 11 bomb on the Grid</li>
+          <li>Each player must find all the bomb</li>
+          <li>The player with the highest score win</li>
         </ul>
         <p>Netcentric Architecture class 2019</p>
       </div>
